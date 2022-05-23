@@ -1,5 +1,7 @@
 package com.gb.m_1919_1872_1.view.picture
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,15 +19,15 @@ import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayViewModel
 
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: FragmentPictureOfTheDayBinding?=null
-    val binding:FragmentPictureOfTheDayBinding
-    get() = _binding!!
+    private var _binding: FragmentPictureOfTheDayBinding? = null
+    val binding: FragmentPictureOfTheDayBinding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPictureOfTheDayBinding.inflate(inflater,container,false)
+        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,11 +42,19 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(it)
         })
         viewModel.sendRequest()
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data =
+                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+            })
+
+        }
     }
 
 
-    private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState){
-        when(pictureOfTheDayAppState){
+    private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
+        when (pictureOfTheDayAppState) {
             is PictureOfTheDayAppState.Error -> {}
             is PictureOfTheDayAppState.Loading -> {}
             is PictureOfTheDayAppState.Success -> {
