@@ -5,16 +5,15 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.FragmentPictureOfTheDayBinding
 import com.gb.m_1919_1872_1.repository.PictureOfTheDayResponseData
+import com.gb.m_1919_1872_1.view.MainActivity
 import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayAppState
 import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -38,6 +37,30 @@ class PictureOfTheDayFragment : Fragment() {
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.app_bar_fav -> {
+                Log.d("@@@", "app_bar_fav")
+            }
+            R.id.app_bar_settings -> {
+                Log.d("@@@", "app_bar_settings")
+            }
+            android.R.id.home -> {
+                BottomNavigationDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, "")
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -55,11 +78,11 @@ class PictureOfTheDayFragment : Fragment() {
 
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHack.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-        bottomSheetBehavior.addBottomSheetCallback( object :
-            BottomSheetBehavior.BottomSheetCallback(){
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                    BottomSheetBehavior.STATE_DRAGGING ->{}
+                    BottomSheetBehavior.STATE_DRAGGING -> {}
                     BottomSheetBehavior.STATE_COLLAPSED -> {}
                     BottomSheetBehavior.STATE_EXPANDED -> {}
                     BottomSheetBehavior.STATE_HALF_EXPANDED -> {}
@@ -69,10 +92,13 @@ class PictureOfTheDayFragment : Fragment() {
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                Log.d("@@@","$slideOffset")
+                Log.d("@@@", "$slideOffset")
             }
 
         })
+
+        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+        setHasOptionsMenu(true)
     }
 
 
