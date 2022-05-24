@@ -128,6 +128,12 @@ class PictureOfTheDayFragment : Fragment() {
                 1->{viewModel.sendRequestToday()}
                 2->{viewModel.sendRequestYT()}
                 3->{viewModel.sendRequestTDBY()}
+            }
+
+            when(position){
+                1->{viewModel.sendRequest(date)}
+                2->{viewModel.sendRequest(date-1)}
+                3->{viewModel.sendRequest(date-2)}
             }*/
             group.findViewById<Chip>(position)?.let{
                 Log.d("@@@", "${it.text.toString()} $position")
@@ -143,10 +149,12 @@ class PictureOfTheDayFragment : Fragment() {
             is PictureOfTheDayAppState.Error -> {}
             is PictureOfTheDayAppState.Loading -> {}
             is PictureOfTheDayAppState.Success -> {
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url)
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url){
+                    // TODO HW скрасить ожидание картинки
+                }
                 binding.lifeHack.title.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.title
-                // TODO HW скрасить ожидание картинки
+
             }
         }
     }
