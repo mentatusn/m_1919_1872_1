@@ -53,18 +53,20 @@
 
         <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
+            style="@style/MyChipStyle"
+            android:theme="@style/MyChipStyle"
             android:layout_height="wrap_content"
-            android:text="Today" />
+            android:text="@string/today" />
 
         <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yesterday"/>
+            android:text="@string/yesterday"/>
 
         <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TDBY" />
+            android:text="@string/tdby" />
     </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.bottomappbar.BottomAppBar
