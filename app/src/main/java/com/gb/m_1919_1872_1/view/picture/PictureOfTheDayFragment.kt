@@ -16,6 +16,7 @@ import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.FragmentPictureOfTheDayBinding
 import com.gb.m_1919_1872_1.repository.PictureOfTheDayResponseData
 import com.gb.m_1919_1872_1.view.MainActivity
+import com.gb.m_1919_1872_1.view.settings.SettingsFragment
 import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayAppState
 import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -56,6 +57,8 @@ class PictureOfTheDayFragment : Fragment() {
             }
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.container,SettingsFragment.newInstance()).commit()
             }
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()
@@ -83,7 +86,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHack.bottomSheetContainer)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
