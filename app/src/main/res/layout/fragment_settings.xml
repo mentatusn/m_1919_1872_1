@@ -56,6 +56,11 @@
             android:text="Меню 3" />
     </com.google.android.material.tabs.TabLayout>
 
-
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="#FF424242"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
 
 </LinearLayout>

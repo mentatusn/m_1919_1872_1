@@ -2,7 +2,6 @@
 <resources>
 
     <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-
     </style>
     <style name="MyStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="tint">?superColor</item>
@@ -26,5 +25,16 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.2</item>
+    </style>
+
+<!--  FIXME 10%==50%  -->
+    <style name="MySmallShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">10%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="MyMediumShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">50dp</item>
+        <item name="cornerFamily">cut</item>
     </style>
 </resources>

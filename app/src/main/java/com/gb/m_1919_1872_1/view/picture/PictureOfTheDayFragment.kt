@@ -59,6 +59,7 @@ class PictureOfTheDayFragment : Fragment() {
                 Log.d("@@@", "app_bar_settings")
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.container,SettingsFragment.newInstance()).commit()
+                // TODO HW addToBAckstack
             }
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()
