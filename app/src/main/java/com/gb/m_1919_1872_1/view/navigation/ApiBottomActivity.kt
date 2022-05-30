@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.ActivityApiBottomBinding
+import com.google.android.material.badge.BadgeDrawable
 
 class ApiBottomActivity : AppCompatActivity() {
     lateinit var binding: ActivityApiBottomBinding
@@ -33,8 +34,13 @@ class ApiBottomActivity : AppCompatActivity() {
                 }
             }
         }
-
         binding.bottomNavigation.selectedItemId = R.id.action_bottom_navigation_mars
+
+        val badge = binding.bottomNavigation.getOrCreateBadge(R.id.action_bottom_navigation_mars)
+        badge.number = 100000000
+        badge.maxCharacterCount = 6
+        badge.badgeGravity = BadgeDrawable.TOP_START
+        //binding.bottomNavigation.removeBadge(R.id.action_bottom_navigation_mars)
 
     }
 }
