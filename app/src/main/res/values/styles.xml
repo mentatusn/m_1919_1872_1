@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="MyBottomSheet" parent="Widget.MaterialComponents.Chip.Choice">
+    </style>
+
     <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
     </style>
     <style name="MyStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
@@ -16,7 +19,7 @@
 
     <style name="MyTabStyle" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabUnboundedRipple">true</item>
-        <item name="tabIndicatorAnimationDuration">2500</item>
+        <item name="tabIndicatorAnimationDuration">500</item>
     </style>
 
     <style name="MyTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
