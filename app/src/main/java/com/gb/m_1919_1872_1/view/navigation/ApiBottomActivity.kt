@@ -41,6 +41,9 @@ class ApiBottomActivity : AppCompatActivity() {
         badge.maxCharacterCount = 6
         badge.badgeGravity = BadgeDrawable.TOP_START
         //binding.bottomNavigation.removeBadge(R.id.action_bottom_navigation_mars)
+        binding.bottomNavigation.menu.removeItem(R.id.action_bottom_navigation_earth)
+        binding.bottomNavigation.menu.removeItem(R.id.action_bottom_navigation_system)
+        binding.bottomNavigation.inflateMenu(R.menu.menu_bottom_navigation_drawer)
 
     }
 }

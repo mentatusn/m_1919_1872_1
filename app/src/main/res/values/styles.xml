@@ -3,6 +3,12 @@
 
     <style name="MyBottomSheet" parent="Widget.MaterialComponents.Chip.Choice">
     </style>
+    <style name="MyBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@drawable/my_navigation_bar_item_tint</item>
+        <item name="itemTextColor">@drawable/my_navigation_bar_item_tint</item>
+        <item name="itemRippleColor">@drawable/my_ripple</item>
+<!--        TODO HW Примените свою тему для BottomNavigationView.-->
+    </style>
 
     <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
     </style>
