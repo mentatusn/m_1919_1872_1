@@ -30,6 +30,8 @@
         <item name="shapeAppearanceSmallComponent">@style/MySmallShape</item>
         <item name="shapeAppearanceMediumComponent">@style/MyMediumShape</item>
 
+        <item name="myTabLayout">@style/MyTabStyle</item>
+
     </style>
 
     <style name="MyRedTheme" parent="MyBaseTheme">

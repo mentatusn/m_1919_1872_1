@@ -1,8 +1,10 @@
 package com.gb.m_1919_1872_1.view.settings
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.FragmentSettingsBinding
@@ -72,5 +74,19 @@ class SettingsFragment : Fragment() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+}
+
+open class A {
+    @CallSuper
+    open fun onAnimationStart() {
+        Log.d("","")
+    }
+}
+
+class B:A() {
+    override fun onAnimationStart(){
+        super.onAnimationStart()
+        Log.d("","")
     }
 }

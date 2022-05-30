@@ -32,35 +32,35 @@
     </com.google.android.material.chip.ChipGroup>
 
 
-    <com.google.android.material.tabs.TabLayout
+    <com.gb.m_1919_1872_1.utils.MyTabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabItem
-            android:tag="one"
+        <com.gb.m_1919_1872_1.utils.MyTabItem
             android:layout_width="wrap_content"
             android:layout_height="?actionBarSize"
+            android:tag="one"
             android:text="Меню 1" />
 
-        <com.google.android.material.tabs.TabItem
-            android:tag="two"
+        <com.gb.m_1919_1872_1.utils.MyTabItem
             android:layout_width="wrap_content"
             android:layout_height="?actionBarSize"
+            android:tag="two"
             android:text="Меню 2" />
 
-        <com.google.android.material.tabs.TabItem
-            android:tag="three"
+        <com.gb.m_1919_1872_1.utils.MyTabItem
             android:layout_width="wrap_content"
             android:layout_height="?actionBarSize"
+            android:tag="three"
             android:text="Меню 3" />
-    </com.google.android.material.tabs.TabLayout>
+    </com.gb.m_1919_1872_1.utils.MyTabLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
-        android:layout_margin="20dp"
-        app:cardBackgroundColor="#FF424242"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="#FF424242" />
 
 </LinearLayout>
