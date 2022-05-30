@@ -23,6 +23,12 @@
         <activity
             android:name=".view.navigation.ApiActivity"
             android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".view.navigation.ApiBottomActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

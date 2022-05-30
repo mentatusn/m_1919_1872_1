@@ -3,7 +3,6 @@ package com.gb.m_1919_1872_1.utils
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import com.gb.m_1919_1872_1.R
 import com.google.android.material.tabs.TabItem
 
 class MyTabItem @JvmOverloads constructor(

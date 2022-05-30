@@ -5,9 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.gb.m_1919_1872_1.view.navigation.EarthFragment
 import com.gb.m_1919_1872_1.view.navigation.MarsFragment
-
 import com.gb.m_1919_1872_1.view.navigation.SystemFragment
-import com.gb.m_1919_1872_1.view.settings.SettingsFragment
 
 class ViewPagerAdapter(private val fm:FragmentManager):FragmentStatePagerAdapter(fm) {
 

@@ -1,7 +1,7 @@
 package com.gb.m_1919_1872_1.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.view.picture.PictureOfTheDayFragment
 

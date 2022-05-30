@@ -1,16 +1,10 @@
 package com.gb.m_1919_1872_1.view.navigation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
-import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.R
-import com.gb.m_1919_1872_1.databinding.FragmentSettingsBinding
 import com.gb.m_1919_1872_1.databinding.FragmentSystemBinding
-import com.gb.m_1919_1872_1.view.settings.SettingsFragment
-import com.google.android.material.tabs.TabLayout
 
 
 class SystemFragment : Fragment() {

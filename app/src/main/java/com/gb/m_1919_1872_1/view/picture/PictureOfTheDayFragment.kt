@@ -1,8 +1,6 @@
 package com.gb.m_1919_1872_1.view.picture
 
-import android.content.Context
 import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.FragmentPictureOfTheDayBinding
-import com.gb.m_1919_1872_1.repository.PictureOfTheDayResponseData
 import com.gb.m_1919_1872_1.view.MainActivity
 import com.gb.m_1919_1872_1.view.settings.SettingsFragment
 import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayAppState

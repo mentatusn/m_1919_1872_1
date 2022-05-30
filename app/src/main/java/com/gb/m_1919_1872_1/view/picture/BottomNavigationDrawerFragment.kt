@@ -1,24 +1,12 @@
 package com.gb.m_1919_1872_1.view.picture
 
-import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import androidx.core.content.ContextCompat.startActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import coil.load
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.BottomNavigationLayoutBinding
-import com.gb.m_1919_1872_1.databinding.FragmentPictureOfTheDayBinding
-import com.gb.m_1919_1872_1.repository.PictureOfTheDayResponseData
-import com.gb.m_1919_1872_1.view.MainActivity
-import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayAppState
-import com.gb.m_1919_1872_1.viewmodel.PictureOfTheDayViewModel
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 

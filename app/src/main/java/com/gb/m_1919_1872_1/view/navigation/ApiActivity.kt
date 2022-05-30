@@ -1,13 +1,10 @@
 package com.gb.m_1919_1872_1.view.navigation
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.ActivityApiBinding
-import com.gb.m_1919_1872_1.databinding.FragmentEarthBinding
 import com.gb.m_1919_1872_1.view.navigation.viewpager.ViewPagerAdapter
-import com.gb.m_1919_1872_1.view.picture.PictureOfTheDayFragment
 
 class ApiActivity : AppCompatActivity() {
     lateinit var binding: ActivityApiBinding
