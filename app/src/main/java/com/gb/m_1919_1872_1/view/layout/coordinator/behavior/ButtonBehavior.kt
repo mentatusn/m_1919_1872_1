@@ -7,8 +7,10 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.gb.m_1919_1872_1.view.layout.coordinator.CoordinatorFragment
 import com.google.android.material.appbar.AppBarLayout
+import kotlin.math.abs
+import kotlin.math.max
 
-class NestedBehavior(
+class ButtonBehavior(
     context: Context,
     attrs: AttributeSet? = null
 ) : CoordinatorLayout.Behavior<View>(context, attrs) {
@@ -22,6 +24,7 @@ class NestedBehavior(
         return (dependency is AppBarLayout)
     }
 
+
     override fun onDependentViewChanged(
         parent: CoordinatorLayout,
         child: View,
@@ -30,7 +33,9 @@ class NestedBehavior(
         Log.d("", "")
 
         val bar = dependency as AppBarLayout
-        child.y = 0 + bar.height.toFloat() + bar.y
+        child.alpha = 1 - abs(2 * bar.y) / bar.height.toFloat()
+        child.x =
+            (bar.width.toFloat() - child.width.toFloat()) * (1 - abs(2 * bar.y) / bar.height.toFloat())
 
         return super.onDependentViewChanged(parent, child, dependency)
     }

@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            android:background="@drawable/ic_wikipedia"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
@@ -54,7 +55,8 @@
         android:layout_marginEnd="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        android:text="+"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:backgroundTint="@color/red"
+        app:layout_behavior=".view.layout.coordinator.behavior.ButtonBehavior"
+        android:text="+" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
