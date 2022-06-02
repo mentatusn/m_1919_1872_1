@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import com.gb.m_1919_1872_1.view.layout.coordinator.CoordinatorFragment
 import com.google.android.material.appbar.AppBarLayout
 
 class NestedBehavior(

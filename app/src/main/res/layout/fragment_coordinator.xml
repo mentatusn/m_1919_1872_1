@@ -49,14 +49,13 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/fab"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         android:backgroundTint="@color/red"
-        app:layout_behavior=".view.layout.coordinator.behavior.ButtonBehavior"
         android:text="+" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

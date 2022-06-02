@@ -1,7 +1,9 @@
 package com.gb.m_1919_1872_1.view.layout.constraint
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.databinding.FragmentConstraintBinding
 
@@ -36,7 +38,8 @@ class ConstraintFragment : Fragment() {
         binding.materialButton2.visibility = View.INVISIBLE
         binding.materialButton3.visibility = View.INVISIBLE*/
 
-        //binding.buttons.visibility= View.GONE
+        binding.buttons1.visibility= View.GONE
+        binding.buttons2.visibility= View.VISIBLE
     }
 
 

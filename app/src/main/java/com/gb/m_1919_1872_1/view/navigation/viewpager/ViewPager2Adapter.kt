@@ -2,8 +2,6 @@ package com.gb.m_1919_1872_1.view.navigation.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.gb.m_1919_1872_1.view.navigation.EarthFragment
 import com.gb.m_1919_1872_1.view.navigation.MarsFragment

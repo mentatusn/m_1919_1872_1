@@ -1,9 +1,10 @@
 package com.gb.m_1919_1872_1.view.layout.motion
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.gb.m_1919_1872_1.databinding.FragmentEarthBinding
 import com.gb.m_1919_1872_1.databinding.FragmentMotionEndBinding
 
 

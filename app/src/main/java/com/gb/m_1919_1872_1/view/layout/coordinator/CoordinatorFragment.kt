@@ -1,10 +1,13 @@
 package com.gb.m_1919_1872_1.view.layout.coordinator
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.databinding.FragmentCoordinatorBinding
-import com.gb.m_1919_1872_1.databinding.FragmentEarthBinding
+import com.gb.m_1919_1872_1.view.layout.coordinator.behavior.ButtonBehavior
 
 
 class CoordinatorFragment : Fragment() {
@@ -25,6 +28,9 @@ class CoordinatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val params = (binding.button.layoutParams as CoordinatorLayout.LayoutParams)
+        params.behavior = ButtonBehavior(requireContext())
+        binding.button.layoutParams = params
     }
 
 
