@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.ActivityLayoutBinding
-import com.gb.m_1919_1872_1.view.layout.fragments.ConstraintFragment
-import com.gb.m_1919_1872_1.view.layout.fragments.CoordinatorFragment
-import com.gb.m_1919_1872_1.view.layout.fragments.MotionFragment
-import com.gb.m_1919_1872_1.view.picture.PictureOfTheDayFragment
+import com.gb.m_1919_1872_1.view.layout.constraint.ConstraintFragment
+import com.gb.m_1919_1872_1.view.layout.coordinator.CoordinatorFragment
+import com.gb.m_1919_1872_1.view.layout.motion.MotionFragment
 
 class LayoutActivity : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class LayoutActivity : AppCompatActivity() {
                     navigationTo(ConstraintFragment())
                     true
                 }
-                R.id.action_bottom_navigation_constraint -> {
+                R.id.action_bottom_navigation_coordinator -> {
                     navigationTo(CoordinatorFragment())
                     true
                 }
@@ -38,7 +37,7 @@ class LayoutActivity : AppCompatActivity() {
                 else -> true
             }
         }
-        binding.bottomNavigationView.selectedItemId = R.id.action_bottom_navigation_constraint
+        binding.bottomNavigationView.selectedItemId = R.id.action_bottom_navigation_coordinator
     }
 
     private fun navigationTo(f: Fragment) {

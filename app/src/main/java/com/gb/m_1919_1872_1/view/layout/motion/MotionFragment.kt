@@ -1,13 +1,12 @@
-package com.gb.m_1919_1872_1.view.layout.fragments
+package com.gb.m_1919_1872_1.view.layout.motion
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.FragmentEarthBinding
 
 
-class CoordinatorFragment : Fragment() {
+class MotionFragment : Fragment() {
 
 
     private var _binding: FragmentEarthBinding? = null
@@ -30,7 +29,7 @@ class CoordinatorFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = CoordinatorFragment()
+        fun newInstance() = MotionFragment()
     }
 
     override fun onDestroy() {
