@@ -7,6 +7,55 @@
     android:orientation="vertical">
 
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/parentSDuper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@id/guide1"
+        app:layout_constraintCircleAngle="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guide1"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button1"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="0"/>
+
+    <Button
+        android:id="@+id/button2"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="45"/>
+    <Button
+        android:id="@+id/button3"
+        app:layout_constraintCircle="@id/parentSDuper"
+        app:layout_constraintCircleRadius="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintCircleAngle="90"/>
+
+
+
     <androidx.constraintlayout.widget.Group
         android:id="@+id/buttons"
         android:layout_width="wrap_content"
@@ -62,5 +111,7 @@
         app:layout_constraintStart_toStartOf="@id/barrier1"
         app:layout_constraintTop_toTopOf="@id/barrier2"
         app:layout_constraintWidth_percent="0.2" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ class ConstraintFragment : Fragment() {
         binding.materialButton2.visibility = View.INVISIBLE
         binding.materialButton3.visibility = View.INVISIBLE*/
 
-        binding.buttons.visibility= View.GONE
+        //binding.buttons.visibility= View.GONE
     }
 
 
