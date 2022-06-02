@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.R
 import com.gb.m_1919_1872_1.databinding.FragmentConstraintBinding
 import com.gb.m_1919_1872_1.databinding.FragmentEarthBinding
+import java.lang.Thread.sleep
 
 
 class ConstraintFragment : Fragment() {
@@ -26,6 +27,19 @@ class ConstraintFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+       /* binding.materialButton1.setOnClickListener {
+            binding.materialButton1.visibility = View.GONE
+            binding.materialButton2.visibility = View.GONE
+            binding.materialButton3.visibility = View.GONE
+        }
+
+        /*//FIXME ???*/
+        binding.materialButton1.visibility = View.INVISIBLE
+        binding.materialButton2.visibility = View.INVISIBLE
+        binding.materialButton3.visibility = View.INVISIBLE*/
+
+        binding.buttons.visibility= View.GONE
     }
 
 
