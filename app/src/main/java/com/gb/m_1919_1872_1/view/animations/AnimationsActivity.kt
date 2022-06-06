@@ -19,10 +19,7 @@ class AnimationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         binding.recyclerView.adapter = Adapter()
-
     }
 
     inner class Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -48,10 +45,10 @@ class AnimationsActivity : AppCompatActivity() {
                 }
                 transitionExplode.duration = 5000
                 transitionExplode.excludeTarget(button,true)
-                val transitionFade = Fade()
+                val transitionFade = Fade().addTarget(button)
                 val transitionSet = TransitionSet()
                 transitionSet.addTransition(transitionExplode)
-                transitionFade.duration = 9999999999
+                transitionFade.duration = 5000
                 transitionSet.addTransition(transitionFade)
                 TransitionManager.beginDelayedTransition(binding.recyclerView,transitionSet)
                 binding.recyclerView.adapter = null
