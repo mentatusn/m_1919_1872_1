@@ -2,6 +2,7 @@ package com.gb.m_1919_1872_1.view.animations
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,21 +23,16 @@ class AnimationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.imageView.setOnClickListener {
+        binding.button.setOnClickListener {
             isOpen = !isOpen
-            val transitionCB = ChangeBounds()
-            val transitionImage = ChangeImageTransform()
-            transitionCB.duration=3000
-            transitionImage.duration=3000
-            val transitionSet = TransitionSet()
-            transitionSet.addTransition(transitionCB)
-            transitionSet.addTransition(transitionImage)
-            TransitionManager.beginDelayedTransition(binding.root,transitionSet)
-            binding.imageView.scaleType =if(isOpen){ImageView.ScaleType.CENTER_CROP}else{ImageView.ScaleType.CENTER_INSIDE}
-           // (binding.imageView.layoutParams as  FrameLayout.LayoutParams)
-            val params = (binding.imageView.layoutParams as  FrameLayout.LayoutParams)
-            params.height = if(isOpen){FrameLayout.LayoutParams.MATCH_PARENT}else{FrameLayout.LayoutParams.WRAP_CONTENT}
-            binding.imageView.layoutParams = params
+            val transition = ChangeBounds()
+            val path = ArcMotion()
+            transition.setPathMotion(path)
+            transition.duration = 3000
+            TransitionManager.beginDelayedTransition(binding.root,transition)
+            val params = (binding.button.layoutParams as FrameLayout.LayoutParams)
+            params.gravity = if(isOpen){ Gravity.BOTTOM or Gravity.END}else { Gravity.TOP or Gravity.START}
+            binding.button.layoutParams = params
         }
     }
 
