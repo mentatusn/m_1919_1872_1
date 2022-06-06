@@ -1,6 +1,7 @@
 package com.gb.m_1919_1872_1.view.animations
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.transition.*
@@ -20,12 +21,14 @@ class AnimationsActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
             //TransitionManager.beginDelayedTransition(binding.transitionsContainer)
             val transitionFade = Fade()
+            val transitionSlide = Slide(Gravity.END)
             transitionFade.duration = 3000
             val transitionChangeBounds = ChangeBounds()
             transitionChangeBounds.duration= 5000
             val transitionSet = TransitionSet()
-            transitionSet.addTransition(transitionFade)
+            //transitionSet.addTransition(transitionFade)
             transitionSet.addTransition(transitionChangeBounds)
+            transitionSet.addTransition(transitionSlide)
             TransitionManager.beginDelayedTransition(binding.transitionsContainer,transitionSet)
             //TransitionManager.beginDelayedTransition(binding.transitionsContainer,transitionFade)
             //TransitionManager.beginDelayedTransition(binding.transitionsContainer,transitionChangeBounds)
