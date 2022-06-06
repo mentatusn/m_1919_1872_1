@@ -24,7 +24,7 @@ class AnimationsActivity : AppCompatActivity() {
         binding.backgroundImage.setOnClickListener {
 
             val constraintSet = ConstraintSet()
-            //constraintSet.clone(binding.constraintContainer)
+            constraintSet.clone(binding.constraintContainer)
 
             val transition = ChangeBounds()
             transition.interpolator = AnticipateOvershootInterpolator(5f)
@@ -33,9 +33,10 @@ class AnimationsActivity : AppCompatActivity() {
 
             isOpen = !isOpen
             if(isOpen){
-                constraintSet.clone(this, R.layout.activity_animations_bonus_end)
+                //constraintSet.clear(R.id.title)
+                constraintSet.connect(R.id.title,ConstraintSet.RIGHT,R.id.backgroundImage,ConstraintSet.RIGHT)
             }else{
-                constraintSet.clone(this, R.layout.activity_animations_bonus_start)
+                constraintSet.connect(R.id.title,ConstraintSet.RIGHT,R.id.backgroundImage,ConstraintSet.LEFT)
             }
 
 
