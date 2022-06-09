@@ -46,6 +46,7 @@ class RecyclerActivity : AppCompatActivity(),OnListItemClickListener {
 
     override fun onRemoveBtnClick(position: Int) {
         list.removeAt(position)
+        
         adapter.setRemoveToList(list,position)
     }
 }
