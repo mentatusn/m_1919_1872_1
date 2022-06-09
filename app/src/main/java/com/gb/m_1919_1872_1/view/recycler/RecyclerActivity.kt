@@ -2,6 +2,7 @@ package com.gb.m_1919_1872_1.view.recycler
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.gb.m_1919_1872_1.databinding.ActivityRecyclerBinding
 
 class RecyclerActivity : AppCompatActivity(), OnListItemClickListener {
@@ -46,6 +47,9 @@ class RecyclerActivity : AppCompatActivity(), OnListItemClickListener {
         binding.recyclerActivityFAB.setOnClickListener {
             onAddBtnClick(list.size)
         }
+
+        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.recyclerView)
+
     }
 
     override fun onItemClick(data: Data) {
