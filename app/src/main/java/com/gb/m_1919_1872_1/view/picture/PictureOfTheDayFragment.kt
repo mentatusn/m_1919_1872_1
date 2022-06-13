@@ -1,6 +1,7 @@
 package com.gb.m_1919_1872_1.view.picture
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -157,6 +158,8 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url){
                     // TODO HW скрасить ожидание картинки
                 }
+                //binding.lifeHack.title.typeface = Typeface.createFromAsset(requireActivity().assets,"azeret.ttf")
+                binding.lifeHack.title.typeface = Typeface.createFromAsset(requireActivity().assets,"level1/level2/azeret.ttf")
                 binding.lifeHack.title.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.title
 
