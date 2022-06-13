@@ -5,18 +5,19 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.SpannedString
-import android.text.style.AbsoluteSizeSpan
-import android.text.style.BulletSpan
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
+import android.text.style.*
 import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.provider.FontRequest
+import androidx.core.provider.FontsContractCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -66,7 +67,7 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.container,SettingsFragment.newInstance()).commit()
+                    .replace(R.id.container, SettingsFragment.newInstance()).commit()
                 // TODO HW addToBAckstack
             }
             android.R.id.home -> {
@@ -123,15 +124,28 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
-            if(isMain){
+            if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back_fab
+                    )
+                )
                 // TODO HW  binding.bottomAppBar.replaceMenu(// R.menu. какое-то другое меню)
-            }else{
-                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(requireContext(),R.drawable.ic_hamburger_menu_bottom_bar))
+            } else {
+                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_hamburger_menu_bottom_bar
+                ))
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_plus_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 // TODO HW binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
             isMain = !isMain
@@ -151,13 +165,11 @@ class PictureOfTheDayFragment : Fragment() {
                 2->{viewModel.sendRequest(date-1)}
                 3->{viewModel.sendRequest(date-2)}
             }*/
-            group.findViewById<Chip>(position)?.let{
+            group.findViewById<Chip>(position)?.let {
                 Log.d("@@@", "${it.text.toString()} $position")
             }
         }
     }
-
-
 
 
     private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
@@ -165,43 +177,88 @@ class PictureOfTheDayFragment : Fragment() {
             is PictureOfTheDayAppState.Error -> {}
             is PictureOfTheDayAppState.Loading -> {}
             is PictureOfTheDayAppState.Success -> {
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url){
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url) {
                     // TODO HW скрасить ожидание картинки
                 }
                 //binding.lifeHack.title.typeface = Typeface.createFromAsset(requireActivity().assets,"azeret.ttf")
-                binding.lifeHack.title.typeface = Typeface.createFromAsset(requireActivity().assets,"level1/level2/azeret.ttf")
+                binding.lifeHack.title.typeface =
+                    Typeface.createFromAsset(requireActivity().assets, "level1/level2/azeret.ttf")
                 binding.lifeHack.title.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.title
-                binding.lifeHack.explanation.text=
+                binding.lifeHack.explanation.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
 
 
-               // val text = requireActivity().resources.getText(R.string.test_html).toString()
-               // val text = "My text <ul><li>bullet one</li><li>bullet two</li>"
-               // binding.lifeHack.explanation.text=Html.fromHtml(text)
-               // val textSpannable = "My text \nbullet one \nbullet two"
-                val textSpannable =  pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
+                // val text = requireActivity().resources.getText(R.string.test_html).toString()
+                // val text = "My text <ul><li>bullet one</li><li>bullet two</li>"
+                // binding.lifeHack.explanation.text=Html.fromHtml(text)
+                // val textSpannable = "My text \nbullet one \nbullet two"
+                val textSpannable = pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
 
 
-                val spannedString:SpannedString
+                val spannedString: SpannedString
                 //val spannableString:SpannableString = SpannableString(textSpannable)
-                var spannableStringBuilder:SpannableStringBuilder= SpannableStringBuilder(textSpannable)
-                binding.lifeHack.explanation.setText(spannableStringBuilder,TextView.BufferType.EDITABLE)
+                var spannableStringBuilder: SpannableStringBuilder =
+                    SpannableStringBuilder(textSpannable)
+                binding.lifeHack.explanation.setText(
+                    spannableStringBuilder,
+                    TextView.BufferType.EDITABLE
+                )
                 spannableStringBuilder = binding.lifeHack.explanation.text as SpannableStringBuilder
 
-                spannableStringBuilder.setSpan(RelativeSizeSpan(2f),0,spannableStringBuilder.length,SpannedString.SPAN_EXCLUSIVE_INCLUSIVE)
+                spannableStringBuilder.setSpan(
+                    RelativeSizeSpan(2f),
+                    0,
+                    spannableStringBuilder.length,
+                    SpannedString.SPAN_EXCLUSIVE_INCLUSIVE
+                )
 
                 //spannableString.is
 
-                spannableStringBuilder.setSpan( ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_700)),
-                8,19,SpannedString.SPAN_EXCLUSIVE_INCLUSIVE)
-                spannableStringBuilder.insert(19,"NEW")
+                spannableStringBuilder.setSpan(
+                    ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.red_700)),
+                    8, 19, SpannedString.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+                spannableStringBuilder.insert(19, "NEW")
                 //spannableStringBuilder.insert(8,"NEW")
 
-                spannableStringBuilder.setSpan( ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.blue)),
-                    21,textSpannable.length,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannableStringBuilder.setSpan(
+                    ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)),
+                    21, textSpannable.length, SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
 
 
+                val request = FontRequest(
+                    "com.google.android.gms.fonts",
+                    "com.google.android.gms",
+                  //  "name=Roboto&amp;weight=100",
+                    "Aguafina Script",
+                    R.array.com_google_android_gms_fonts_certs
+                )
+
+
+                FontsContractCompat.requestFont(
+                    requireContext(),
+                    request,
+                    object : FontsContractCompat.FontRequestCallback() {
+                        override fun onTypefaceRetrieved(typeface: Typeface?) {
+                            // super.onTypefaceRetrieved(typeface)
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                typeface?.let {
+                                    spannableStringBuilder.setSpan(
+                                        TypefaceSpan(it),
+                                        21,
+                                        textSpannable.length,
+                                        SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                                    )
+                                }
+                            } else {
+                                binding.lifeHack.explanation.typeface = typeface
+                            }
+                        }
+                    },
+                    Handler(Looper.getMainLooper())
+                )
 
             }
         }
