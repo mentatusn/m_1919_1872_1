@@ -1,5 +1,6 @@
 package com.gb.m_1919_1872_1.view.picture
 
+
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
@@ -13,7 +14,9 @@ import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.*
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -63,7 +66,7 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.container,SettingsFragment.newInstance()).commit()
+                    .replace(R.id.container, SettingsFragment.newInstance()).commit()
                 // TODO HW addToBAckstack
             }
             android.R.id.home -> {
@@ -120,15 +123,28 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
-            if(isMain){
+            if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back_fab
+                    )
+                )
                 // TODO HW  binding.bottomAppBar.replaceMenu(// R.menu. какое-то другое меню)
-            }else{
-                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(requireContext(),R.drawable.ic_hamburger_menu_bottom_bar))
+            } else {
+                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_hamburger_menu_bottom_bar
+                ))
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_plus_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 // TODO HW binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
             isMain = !isMain
@@ -148,13 +164,11 @@ class PictureOfTheDayFragment : Fragment() {
                 2->{viewModel.sendRequest(date-1)}
                 3->{viewModel.sendRequest(date-2)}
             }*/
-            group.findViewById<Chip>(position)?.let{
+            group.findViewById<Chip>(position)?.let {
                 Log.d("@@@", "${it.text.toString()} $position")
             }
         }
     }
-
-
 
 
     private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
@@ -162,65 +176,99 @@ class PictureOfTheDayFragment : Fragment() {
             is PictureOfTheDayAppState.Error -> {}
             is PictureOfTheDayAppState.Loading -> {}
             is PictureOfTheDayAppState.Success -> {
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url){
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url) {
                     // TODO HW скрасить ожидание картинки
                 }
                 //binding.lifeHack.title.typeface = Typeface.createFromAsset(requireActivity().assets,"azeret.ttf")
-                binding.lifeHack.title.typeface = Typeface.createFromAsset(requireActivity().assets,"level1/level2/azeret.ttf")
+                binding.lifeHack.title.typeface =
+                    Typeface.createFromAsset(requireActivity().assets, "level1/level2/azeret.ttf")
                 binding.lifeHack.title.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.title
-                binding.lifeHack.explanation.text=
+                binding.lifeHack.explanation.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
 
 
-               // val text = requireActivity().resources.getText(R.string.test_html).toString()
+                // val text = requireActivity().resources.getText(R.string.test_html).toString()
                 val text = "My text <ul><li>bullet one</li><li>bullet two</li>"
-                binding.lifeHack.explanation.text=Html.fromHtml(text)
-                val textSpannable = "My text \nbullet one \nbullet two"
+                //binding.lifeHack.explanation.text=Html.fromHtml(text)
+                val textSpannable =
+                    "My text \nbullet one \nbullet two\nbullet one \nbullet two\nbullet one \nbullet twowefgewrgt\nbullet two\nbullet one \nbullet twowefgewrgt\nbullet two\nbullet one \nbullet twowefgewrgt\nbullet two\nbullet one \nbullet twowefgewrgt\nbullet two\nbullet one \nbullet twowefgewrgt"
 
 
-                val spannedString:SpannedString
-                val spannableString:SpannableString = SpannableString(textSpannable)
-                val spannableStringBuilder:SpannableStringBuilder
+                val spannedString: SpannedString
+                val spannableString: SpannableString = SpannableString(textSpannable)
+                val spannableStringBuilder: SpannableStringBuilder
 
-                /*val split = textSpannable.split("\n").toMutableList()
-                repeat(split.size){
-                    if(it>0)
-                    split[it] = "/n${split[it]}"
-                }*/
+                //val list = textSpannable.indexesOf("\n")
+                val list = indexesOfMy("\n",textSpannable)
+
+                Log.d("mylogs","${textSpannable.indexOf("NNN")}")
+                Log.d("mylogs","${indexesOfMy("\n",textSpannable)}")
+                Log.d("mylogs","${textSpannable.indexesOf("\n")}")
+
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
 
-                   /* var counter = 0
-                    split.forEach {
-                        val startPosition = counter
-                        val endPosition = counter+it.length
-                        spannableString.setSpan(BulletSpan(20, ContextCompat.getColor(requireContext(),R.color.red_700),10),
-                            counter,counter+it.length,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
-                        counter+=it.length
-                    }*/
+                    var current = list.first()
+                    list.forEach {
+                        if (current != it) {
+                            spannableString.setSpan(
+                                BulletSpan(
+                                    20,
+                                    ContextCompat.getColor(requireContext(), R.color.red_700),
+                                    10
+                                ),
+                                current + 1, it, SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                            )
+                        }
+                        current = it
+                    }
+                    spannableString.setSpan(
+                        BulletSpan(
+                            20,
+                            ContextCompat.getColor(requireContext(), R.color.red_700),
+                            10
+                        ),
+                        current + 1, textSpannable.length, SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
 
-
-
-
-                   spannableString.setSpan(BulletSpan(20, ContextCompat.getColor(requireContext(),R.color.red_700),10),
-                    9,18,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
-                   spannableString.setSpan(BulletSpan(20, ContextCompat.getColor(requireContext(),R.color.red_700),10),
-                    21,textSpannable.length,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
-                }else{
-                    spannableString.setSpan(BulletSpan(20, ContextCompat.getColor(requireContext(),R.color.red_700)),
-                        9,19,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
+                } else {
+                    spannableString.setSpan(
+                        BulletSpan(20, ContextCompat.getColor(requireContext(), R.color.red_700)),
+                        9, 19, SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
                 }
 
-                spannableString.setSpan( ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_700)),
-                8,19,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannableString.setSpan(
+                    ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.red_700)),
+                    8, 19, SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
 
-                spannableString.setSpan( ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.blue)),
-                    21,textSpannable.length,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
-                binding.lifeHack.explanation.text=spannableString
+                spannableString.setSpan(
+                    ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)),
+                    21, textSpannable.length, SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                binding.lifeHack.explanation.text = spannableString
 
             }
         }
+    }
+
+    fun String.indexesOf(substr: String, ignoreCase: Boolean = true): List<Int> =
+        (if (ignoreCase) Regex(substr, RegexOption.IGNORE_CASE) else Regex(substr))
+            .findAll(this).map { it.range.first }.toList()
+
+    fun indexesOfMy(substr: String, string: String): List<Int>  {
+        val list = mutableListOf<Int>()
+        var mutableString = string
+        var current = 0
+        while (mutableString.indexOf(substr)!=-1){
+            val indexC = mutableString.indexOf(substr)
+            list.add(current+indexC)
+            current+=indexC+1 // костыль
+            mutableString= mutableString.substring(indexC+substr.length)
+        }
+        return  list
     }
 
     companion object {
