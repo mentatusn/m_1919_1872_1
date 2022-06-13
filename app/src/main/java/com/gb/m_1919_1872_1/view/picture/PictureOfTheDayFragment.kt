@@ -15,6 +15,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.*
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -184,8 +185,9 @@ class PictureOfTheDayFragment : Fragment() {
 
                 val spannedString:SpannedString
                 //val spannableString:SpannableString = SpannableString(textSpannable)
-                val spannableStringBuilder:SpannableStringBuilder= SpannableStringBuilder(textSpannable)
-
+                var spannableStringBuilder:SpannableStringBuilder= SpannableStringBuilder(textSpannable)
+                binding.lifeHack.explanation.setText(spannableStringBuilder,TextView.BufferType.EDITABLE)
+                spannableStringBuilder = binding.lifeHack.explanation.text as SpannableStringBuilder
 
                 spannableStringBuilder.setSpan(RelativeSizeSpan(2f),0,spannableStringBuilder.length,SpannedString.SPAN_EXCLUSIVE_INCLUSIVE)
 
@@ -198,9 +200,8 @@ class PictureOfTheDayFragment : Fragment() {
 
                 spannableStringBuilder.setSpan( ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.blue)),
                     21,textSpannable.length,SpannedString.SPAN_EXCLUSIVE_EXCLUSIVE)
-                spannedString = SpannedString(spannableStringBuilder)
 
-                binding.lifeHack.explanation.text=spannedString
+
 
             }
         }
