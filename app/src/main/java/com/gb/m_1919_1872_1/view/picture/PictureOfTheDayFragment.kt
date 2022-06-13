@@ -235,8 +235,6 @@ class PictureOfTheDayFragment : Fragment() {
                     "Aguafina Script",
                     R.array.com_google_android_gms_fonts_certs
                 )
-
-
                 FontsContractCompat.requestFont(
                     requireContext(),
                     request,
