@@ -37,13 +37,15 @@
     <style name="MyRedTheme" parent="MyBaseTheme">
         <item name="superColor">@color/red</item>
     </style>
-
     <style name="MyGreenTheme" parent="MyBaseTheme">
         <item name="superColor">@color/green</item>
     </style>
 
     <style name="MyBlueTheme" parent="MyBaseTheme">
         <item name="superColor">@color/blue</item>
+    </style>
+    <style name="MyBlueTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
 
