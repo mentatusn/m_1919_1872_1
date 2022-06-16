@@ -1,6 +1,7 @@
 package com.gb.m_1919_1872_1.view.ux
 
 import android.os.Bundle
+import android.text.TextUtils.replace
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.gb.m_1919_1872_1.R
@@ -33,8 +34,13 @@ class UXActivity : AppCompatActivity() {
         binding.bottomNavigationViewUX.selectedItemId = R.id.fragment_ux_text
     }
 
-    fun navigateTo(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.container,fragment).commit()
+    private fun navigateTo(fragment: Fragment){
+        supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.slide_in,
+            R.anim.fade_out,
+            R.anim.fade_in,
+            R.anim.slide_out
+        ).replace(R.id.container,fragment).commit()
     }
 
 }
