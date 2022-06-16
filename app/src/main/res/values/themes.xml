@@ -1,5 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+    <style name="MyBaseThemeForTestDynamicColor" parent="Theme.Material3.DynamicColors.DayNight"></style>
+
     <style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:navigationBarColor">?superColor</item>
@@ -37,6 +39,7 @@
     <style name="MyRedTheme" parent="MyBaseTheme">
         <item name="superColor">@color/red</item>
     </style>
+
     <style name="MyGreenTheme" parent="MyBaseTheme">
         <item name="superColor">@color/green</item>
     </style>
@@ -44,10 +47,10 @@
     <style name="MyBlueTheme" parent="MyBaseTheme">
         <item name="superColor">@color/blue</item>
     </style>
+
     <style name="MyBlueTheme.Splash">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
-
 
 
 </resources>

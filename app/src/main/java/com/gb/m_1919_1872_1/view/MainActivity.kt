@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         // TODO HW 1 обязательно перед setContentView
 
 
-        setTheme(R.style.MyBlueTheme)
+        //setTheme(R.style.MyBlueTheme)
         setContentView(R.layout.activity_main)
 
         // TODO HW 2 если момент setContentView уже упущен, то вызываем  recreate()
