@@ -169,7 +169,6 @@ class RecyclerActivityAdapter(private var list: MutableList<Pair<Data, Boolean>>
                         it.first to !it.second
                     }
                     marsDescriptionTextView.visibility = if(list[layoutPosition].second) View.VISIBLE else View.GONE
-                    //notifyItemChanged(layoutPosition) // FIXME
                 }
             }
         }

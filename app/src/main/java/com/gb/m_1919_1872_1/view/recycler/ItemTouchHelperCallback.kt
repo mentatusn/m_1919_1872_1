@@ -7,7 +7,6 @@ class ItemTouchHelperCallback(private val itemTouchHelperAdapter: ItemTouchHelpe
     ItemTouchHelper.Callback() {
 
 
-    //FIXME
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
